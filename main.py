@@ -12,11 +12,8 @@ import time
 import os
 
 # Import script
+from tools import limpiar_pantalla
 import utilities
-
-# Clean screen
-def limpiar_pantalla():
-    os.system('cls' if os.name == "nt" else 'clear') # Clean terminal if the os is "windows"
 
 # Print principal menu options
 def menu():

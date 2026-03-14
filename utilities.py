@@ -3,11 +3,12 @@
 # TODO: Crear archivo "consultas.py" para las consultas específicas y el graficado
 
 # Libraries
+from os import register_at_fork
 import time
 from pathlib import Path # Encargado de crear un objeto "Path" para el subdirectorio
 
 # Import script
-import main
+from tools import limpiar_pantalla
 
 # Variables
 SUBFOLDER = Path("datos")
@@ -30,25 +31,25 @@ def registrar_respuestas_correctas():
 
     while True:
         try:
-            right_answers = input("Por favor, inserte 10 carácteres (Permitidos: A, B, C, D): ")
+            right_answers = input("Por favor, inserte 10 carácteres en mayúscula (Permitidos: A, B, C, D): ")
 
             # All: Recorre todos los carácteres de "right_answers". Devuelve "True" si 
             # todos los carácteres insertados son A, B, C o D
             if (all(char in allowed_chars for char in right_answers) and len(right_answers) == 10):
                 
                 # Si la cadena es válida, se almacena la respuesta
-                with open(target_file, "w") as f: # "w" para sobreescribir el contenido
-                    f.write(right_answers)
+                with open(target_file, "w") as f_w: # "w" para sobreescribir el contenido
+                    f_w.write(right_answers)
                     print("[+] ¡Respuestas correctas guardadas exitosamente!")
                 break
         except:
-            pass
+            print("[|-|] Error. Valor insertado inválido (A, B, C, D)")
 
 # Registrar alumno
 def registrar_alumno():
     target_file = asignar_ruta("alumnos.txt")
 
-    print("")
+    
 
 # Registrar respuestas de un alumno
 def registrar_respuestas_alumno():
@@ -65,6 +66,7 @@ def realizar_calificado():
 
 if __name__ == "__main__":
     print("ERROR. Script 'utilidades.py' ejecutado directamente")
+    registrar_alumno()
     
     # Debugging stuff
     # -------------------------------
@@ -72,7 +74,7 @@ if __name__ == "__main__":
     # registrar_respuestas_correctas()
 
     # registrar_respuestas_correctas()
-    # main.limpiar_pantalla()
+    # limpiar_pantalla()
     # print("uwu")
     # time.sleep(2)
     # -------------------------------
