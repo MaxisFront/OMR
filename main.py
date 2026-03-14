@@ -7,12 +7,18 @@
 
 # Libraries
 import time
+import os
 
 # Import script
 import utilities
 
 from utilities import printowo
 
+# Clean screen
+def limpiar_pantalla():
+    os.system('cls' if os.name == "nt" else 'clear') # Clean terminal if the os is "windows"
+
+# Print principal menu options
 def menu():
     print("\n" + "="* 40)
     print("SISTEMA DE CALIFICACIÓN POR LÁSER ÓPTICO\n")
@@ -27,24 +33,57 @@ def menu():
 
     print("\n" + "="* 40 + "\n")
 
-
+# Print submenu options
 def consultas():
     print("\n" + "="* 40)
 
     print("DESPLEGANDO SUBMENÚ...\n")
-    print("1) Calificaciones generales")
-    print("2) Calificación de un estudiante")
-    print("3) Top 3 calificaciones")
-    print("4) Promedio de aciertos por reactivo")
-    print("5) Graficación (Top 3 y calificaciones)")
-    print("6) Regresar al menú")
+    print("a) Calificaciones generales")
+    print("b) Calificación de un estudiante")
+    print("c) Top 3 calificaciones")
+    print("d) Promedio de aciertos")
+    print("e) Graficación (Top 3 y calificaciones)")
+    print("f) Regresar al menú")
 
     print("\n" + "="* 40 + "\n")
 
 def utilidades(option):
 
-    # Llamar al archivo utilidades y realizar la lógica respectiva de cada opción
-    pass
+    match option:
+        case 1: # Calificaciones generales
+            pass
+        case 2: # Calificación de un estudiante
+            pass
+        case 3: # Top 3 calificaciones
+            pass
+        case 4: # Promedio general de aciertos
+            pass
+        case 5: # Desplegar submenú y verificar que respuesta sea válida
+
+            while True:
+
+                time.sleep(1)
+                consultas()
+                # Se registra la respuesta para el submenú
+                try:
+                    option = input("\n[!] Seleccione una de las siguientes 6 opciones: ")
+                    if ("a" <= option <= "f"):
+                        limpiar_pantalla()
+                        
+                        if (option == "f"):
+                            break
+                        
+                        print(f"Respuesta {option} seleccionada")
+                        time.sleep(1)
+
+                        # TODO: Llamar a las funciones necesarias del submenú
+                        break
+                    else:
+                         print("[*] Respuesta inválida. Seleccione una de las seis opciones.")
+                except:
+                    print("[|-|] Error: Valor insertado inválido (a, b, c, d, e, f)")
+                # TODO: Mostrar el submenú y verificar que input esté entre "a" y "f"
+
 
     # Debugigng stuff
     # ---------------------------
@@ -56,26 +95,30 @@ def utilidades(option):
 # Program executed directly
 if __name__ == "__main__":
     
-    menu()
-    printowo()
+   
 
     while True:
-        
-        time.sleep(2)
+
+        menu()
+        time.sleep(1)
         
         # Check if answer is valid (Answer from 1 to 6)
         try:
-            option = int(input("\n[!] Seleccione una de las siguientes 5 opciones: "))
+            option = int(input("\n[!] Seleccione una de las siguientes 6 opciones: "))
 
             if (option == 6):
                 break # Close Program
 
             if (option in range(1, 6)):
-                utilidades(option) # Call utils later for each instruction
+                limpiar_pantalla()
+                
+                print(f"Respuesta {option} seleccionada")
                 time.sleep(1)
+
+                utilidades(option) # Call utils later for each instruction
                 # Doesn't break until user selects option 6
             else:
-                print("Respuesta inválida. Seleccione una de las seis opciones.")
+                print("[*] Respuesta inválida. Seleccione una de las seis opciones.")
         
         except: 
-            print("ERROR: Valor insertado inválido")
+            print("[|-|] ERROR: Valor insertado inválido (1, 2, 3, 4, 5, 6)")
