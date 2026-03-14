@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 # option: Respuesta del usuario
-# TODO: Limpiar la consola para evitar acumulación de texto (library OS)
-# TODO: Lógica para el submenú
+# TODO: Implementar lógica para registrar una respuesta correcta (respuestas_correctas.txt)
+# TODO: Implementar lógica para registrar un alumno (registrar_alumnos.txt)
+# TODO: Implementar lógica para registar respuesta de alumno (registrar_respuesta)
+# TODO: Implementar lógica para realizar calificado (calificado_dia_mes_hora.txt)
 # TODO: Implementar lógica para llamar a consultas
 
 # Libraries
@@ -50,15 +52,15 @@ def consultas():
 def utilidades(option):
 
     match option:
-        case 1: # Calificaciones generales
+        case 1: # Registrar respuestas correctas
             pass
-        case 2: # Calificación de un estudiante
+        case 2: # Registrar alumno
             pass
-        case 3: # Top 3 calificaciones
+        case 3: # Registrar respuesta de alumno
             pass
-        case 4: # Promedio general de aciertos
+        case 4: # Realizar calificado
             pass
-        case 5: # Desplegar submenú y verificar que respuesta sea válida
+        case 5: # Desplegar consultas específicas
 
             while True:
 
@@ -95,8 +97,6 @@ def utilidades(option):
 # Program executed directly
 if __name__ == "__main__":
     
-   
-
     while True:
 
         menu()
