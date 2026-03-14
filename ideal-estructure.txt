@@ -1,0 +1,14 @@
+├── data/                  
+│   ├── clave_maestra.txt  # 1: 10 Characters (A, B, C or D) 
+│   ├── alumnos.txt        # 3: Max 30 registrations (Code Student Name)
+│   ├── respuestas.txt     # 3: Captured answers (Code Answers)
+│   └── resultados.txt     # 4: Grades (Code Right-Answers) 
+├── src/                   
+│   ├── __init__.py        # Make subdirectory a package
+│   ├── core.py            # Grading and calculations for average logic
+│   ├── database.py        # Read/Write file.txt functionalities
+│   ├── graphics.py        # Matploit/Panda Grafication
+│   └── validators.py      # Validations (4 characters code, String of 10)
+├── main.py                # Starting Point and Manin Menu
+└── requirements.txt       # Dependencies (matplotlib, pandas)
+
