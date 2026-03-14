@@ -14,8 +14,6 @@ import os
 # Import script
 import utilities
 
-from utilities import printowo
-
 # Clean screen
 def limpiar_pantalla():
     os.system('cls' if os.name == "nt" else 'clear') # Clean terminal if the os is "windows"
@@ -53,7 +51,8 @@ def utilidades(option):
 
     match option:
         case 1: # Registrar respuestas correctas
-            pass
+            utilities.registrar_respuestas_correctas()
+            time.sleep(1)
         case 2: # Registrar alumno
             pass
         case 3: # Registrar respuesta de alumno
