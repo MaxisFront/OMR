@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 # option: Respuesta del usuario
-# TODO: Implementar lógica para registrar una respuesta correcta (respuestas_correctas.txt)
-# TODO: Implementar lógica para registrar un alumno (registrar_alumnos.txt)
 # TODO: Implementar lógica para registar respuesta de alumno (registrar_respuesta)
 # TODO: Implementar lógica para realizar calificado (calificado_dia_mes_hora.txt)
 # TODO: Implementar lógica para llamar a consultas
@@ -54,7 +52,8 @@ def utilidades(option):
             utilities.registrar_alumno()
             time.sleep(1)
         case 3: # Registrar respuesta de alumno
-            pass
+            utilities.registrar_respuestas_alumno()
+            time.sleep(1)
         case 4: # Realizar calificado
             pass
         case 5: # Desplegar consultas específicas
