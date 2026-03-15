@@ -51,7 +51,8 @@ def utilidades(option):
             utilities.registrar_respuestas_correctas()
             time.sleep(1)
         case 2: # Registrar alumno
-            pass
+            utilities.registrar_alumno()
+            time.sleep(1)
         case 3: # Registrar respuesta de alumno
             pass
         case 4: # Realizar calificado
@@ -78,17 +79,9 @@ def utilidades(option):
                         break
                     else:
                          print("[*] Respuesta inválida. Seleccione una de las seis opciones.")
-                except:
+                except ValueError:
                     print("[|-|] Error: Valor insertado inválido (a, b, c, d, e, f)")
                 # TODO: Mostrar el submenú y verificar que input esté entre "a" y "f"
-
-
-    # Debugigng stuff
-    # ---------------------------
-    #uwu = input("choting uwu: ")
-    #if (uwu == "uwu"):
-    #    print("awa")
-    # ---------------------------
 
 # Program executed directly
 if __name__ == "__main__":
