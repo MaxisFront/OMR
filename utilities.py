@@ -125,7 +125,7 @@ def registrar_respuestas_alumno():
             
         try:
             # Recibimos la CLAVE y respuestas del estudiante
-            student = input("\nPor favor, inserte la CLAVE y las respuestas del (la) estudiante (XXXX Respuestas): ")
+            student = input("\nPor favor, inserte la CLAVE y las respuestas del (la) estudiante: ")
         
             student_clean = student.strip().split()
             
@@ -153,7 +153,7 @@ def registrar_respuestas_alumno():
                             break
 
             except FileNotFoundError:
-                print("\n[*] Error. Aún no se han registrado estudiantes")
+                print("\n[*] Error. Aún no se han registrado estudiantes.")
             
             answer_already_registered = False
             try:
@@ -179,7 +179,7 @@ def registrar_respuestas_alumno():
                 continue
             
             if (answer_already_registered):
-                print("\n[*] Ya se ha registrado una calificación para este estudiante")
+                print("\n[*] Ya se ha registrado una calificación para este estudiante.")
                 continue
 
             # Insertar "?" cuando falten respuestas (ABCD??????)
@@ -190,18 +190,50 @@ def registrar_respuestas_alumno():
                 f_a.write(f"{student_code} {student_grade}\n")
                 print("\n[!] ¡Respuestas registradas exitosamente!")
                 break
-        
+
         except ValueError:
             print("\n[|-|] Error. Valor insertado inválido (XXXX XXXXXXXXXX)")
-
 
 # Realizar calificado
 def realizar_calificado():
     target_file = asignar_ruta("calificaciones.txt")
+    correct_answers = asignar_ruta("respuestas_correctas.txt") # Esencial para obtener las "respuestas correctas"
+    students_answers = asignar_ruta("respuestas_alumnos.txt") # Esencial para obtener las "respuestas de los estudiantes"
+    
+    try:
+        with open(correct_answers, "r") as f_r:
+            master_answers = f_r.read().strip() # Limpiamos la respuesta por si hubiese un espacio
+            
+            if (not master_answers):
+                print("\n[*] No exiisten respuestas corretas registradas.")
+                return
+        
+        with open(students_answers, "r") as f_r, open(target_file, "w") as f_w:
+
+            for line in f_r:
+                file_line = line.split()
+                if not file_line: continue
+                
+                code = file_line[0]
+                answer = file_line[1]
+
+                # Contar las respuestas correctas del usuario
+                count_right_answers = 0
+                
+                for i in range(10):
+                    if (answer[i] == master_answers[i]):
+                        count_right_answers += 1
+
+                f_w.write(f"{code} {count_right_answers}\n")
+
+        print("[!] ¡Calificaciones registradas exitosamente!")
+
+    except FileNotFoundError as e: # Especifíca qué archivo falta para realizar el calificado
+        print(f"\n[|-|] Error. El archivo {e.filename} no existe.")
     
 
 if __name__ == "__main__":
-    print("ERROR. Script 'utilidades.py' ejecutado directamente")
+    print("ERROR. Script 'utilidades.py' ejecutado directamente.")
     
     # Debugging stuff
     # -------------------------------

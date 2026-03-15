@@ -55,6 +55,8 @@ def utilidades(option):
             utilities.registrar_respuestas_alumno()
             time.sleep(1)
         case 4: # Realizar calificado
+            utilities.realizar_calificado()
+            time.sleep(1)
             pass
         case 5: # Desplegar consultas específicas
 
